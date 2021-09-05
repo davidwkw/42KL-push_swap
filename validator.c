@@ -3,18 +3,20 @@
 
 static void	is_arrint(int arr_c, char **s)
 {
-	unsigned int	i;
+	int	i;
+	int j;
 
 	i = 0;
 	while (i < arr_c)
 	{
-		while (*s[i])
+		j = 0;
+		while (s[i][j])
 		{
-			if (*s[i] == '-')
-				s[i]++;
-			if (!ft_isdigit(*s[i]))
+			if (s[i][j] == '-')
+				j++;
+			if (!ft_isdigit(s[i][j]))
 				error_handler("Error");
-			s[i]++;
+			j++;
 		}
 		i++;
 	}
@@ -25,7 +27,7 @@ static int	*atoi_intl(unsigned int arrc, char *arr[])
 	unsigned int	i;
 	int				*list;
 
-	list = malloc(sizeof(int) * (arrc + 1));
+	list = malloc(sizeof(int) * (arrc));
 	i = 0;
 	if (list)
 	{
@@ -38,7 +40,7 @@ static int	*atoi_intl(unsigned int arrc, char *arr[])
 	return (list);
 }
 
-static int	check_arrduplimits(unsigned int arrc, int *list)
+static void	check_arrduplimits(unsigned int arrc, int *list)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -52,34 +54,26 @@ static int	check_arrduplimits(unsigned int arrc, int *list)
 			error_handler("Error");
 		}
 		j = i + 1;
-		while (list[j])
+		while (j < arrc)
 		{
-			if (list[i] == list[j++])
+			if (list[i] == list[j])
 			{
 				free(list);
 				error_handler("Error");
 			}
+			j++;
 		}
+		i++;
 	}
 }
 
-static unsigned int arr_len(char *arr[])
+int	*validate_int_args(int *arrc, char **arr)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	return (i);
-}
-
-int	*validate_int_args(int *arrc, char *arr[])
-{
-	int	*list;
+	int		*list;
 
 	if (*arrc == 2)
 	{
-		arr = ft_split(arr[1], ' ');
+		arr = ft_split(*arr, ' ');
 		*arrc = arr_len(arr);
 	}
 	else

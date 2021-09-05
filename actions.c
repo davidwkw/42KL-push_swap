@@ -26,14 +26,12 @@ int	push(t_list **el, t_list **stack)
 
 int	rotate(t_list **head)
 {
-	t_list	*temp;
 	t_list	*last;
 
 	if (!head)
 		return (0);
 	last = *head;
-	while (last->next->next)
-		last = last->next;
+
 	ft_lstadd_back(head, *head);
 	*head = (*head)->next;
 	last->next = NULL;
@@ -47,12 +45,12 @@ int	reverse_rotate(t_list **head)
 
 	if (!head)
 		return (0);
-	last = *head;
-	while (last->next->next)
-		last = last->next;
-	temp = ft_lstlast(*head);
-	ft_lstadd_front(head, temp);
-	last->next = NULL;
+	temp = *head;
+	while (temp->next->next)
+		temp = temp->next;
+	last = ft_lstlast(*head);
+	ft_lstadd_front(head, last);
+	temp->next = NULL;
 	return (1);
 }
 

@@ -15,18 +15,18 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I.
+CFLAGS = -Wall -Werror -Wextra -g
 
 NAME = push_swap
 
-$(LIBFT):
-	@make -C $(LIBFTDIR) all
-
 all : $(NAME)
 
-$(NAME) : $(LIBFT)
+$(NAME) : $(LIBFT) $(OBJS)
 	@echo "Creating $(NAME)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
+
+$(LIBFT):
+	@make -C $(LIBFTDIR) bonus
 
 bonus : all
 

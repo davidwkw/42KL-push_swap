@@ -4,12 +4,12 @@ static void	reverse_offset(t_list ** a, t_list **b, int offset)
 {
 	int	i;
 
-	i = 0;
-	while (i < offset)
+	i = -1;
+	while (++i < offset)
 		action_dispatcher("rrb", a, b);
 }
 
-static void	sort_a(t_list **a, t_list **b, int size)
+void	sort_a(t_list **a, t_list **b, int size)
 {
 	int median;
 	int	i;
@@ -18,9 +18,9 @@ static void	sort_a(t_list **a, t_list **b, int size)
 		return (a_base_handler(a, size));
 	median = find_medval(*a, size);
 	i = 0;
-	while (i <= size / 2)
+	while (i < size)
 	{
-		if (vp_to_i((*a)->content) < median)
+		if (vp_to_i((*a)->content) < median) // median 213 // "788 213 1235"
 		{
 			action_dispatcher("pb", a, b);
 			size--;
@@ -32,10 +32,10 @@ static void	sort_a(t_list **a, t_list **b, int size)
 			action_dispatcher("ra", a, b);
 	}
 	sort_a(a, b, size);
-	sort_b(a, b, size);
+	sort_b(a, b, i);
 }
 
-static void	sort_b(t_list **a, t_list **b, int p_size)
+void	sort_b(t_list **a, t_list **b, int p_size)
 {
 	int	median;
 	int offset;
@@ -44,7 +44,7 @@ static void	sort_b(t_list **a, t_list **b, int p_size)
 		return (b_base_handler(a, b, p_size));
 	median = find_medval(*b, p_size);
 	offset = 0;
-	while (offset <= p_size)
+	while (offset < p_size)
 	{
 		if (vp_to_i((*a)->content) > median)
 		{
