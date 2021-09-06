@@ -20,7 +20,7 @@ void	sort_a(t_list **a, t_list **b, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (vp_to_i((*a)->content) < median) // median 213 // "788 213 1235"
+		if (vp_to_i((*a)->content) < median)
 		{
 			action_dispatcher("pb", a, b);
 			size--;
@@ -59,6 +59,7 @@ void	sort_b(t_list **a, t_list **b, int p_size)
 	}
 	reverse_offset(a, b, offset);
 	sort_b(a, b, p_size);
+	// sort_a();
 }
 
 void	sort_list(t_list **a, t_list **b, int size)

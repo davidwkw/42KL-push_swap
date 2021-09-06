@@ -19,6 +19,8 @@ void	sort_a(t_list **a, t_list **b, int size);
 void	sort_b(t_list **a, t_list **b, int p_size);
 void	sort_list(t_list **a, t_list **b, int size);
 
+int		is_pt_sorted(t_list *head, int size);
+
 void	a_base_handler(t_list **a, int size);
 void	b_base_handler(t_list **a, t_list **b, int size);
 int		find_medval(t_list *stack, int size);

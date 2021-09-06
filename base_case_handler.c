@@ -20,7 +20,7 @@ static void	a_base_3_handler(t_list **a)
 	first = vp_to_i((*a)->content);
 	second = vp_to_i((*a)->next->content);
 	third = vp_to_i((*a)->next->next->content);
-	if (first > second && first < third && second < third) // 123, 23, 421
+	if (first > second && first < third && second < third)
 		action_dispatcher("sa", a, NULL);
 	else if (first > second && second < third && first > third)
 		action_dispatcher("ra", a, NULL);

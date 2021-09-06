@@ -1,39 +1,58 @@
 #include "push_Swap.h"
 
+static int check_print_combo(char *str1, char *str2)
+{
+	int combo;
+
+	combo = 0;
+	if (!ft_strncmp(str1, "sa", 2) && !ft_strncmp(str2, "sb", 2))
+		combo = write(1, "ss", 2);
+	else if (!ft_strncmp(str1, "ra", 2) && !ft_strncmp(str2, "rb", 2))
+		combo = write(1, "rr", 2);
+	else if (!ft_strncmp(str1, "rra\n", 4) && !ft_strncmp(str2, "rrb", 3))
+		combo = write(1, "rrr", 3);
+	else if (!ft_strncmp(str2, "sa", 2) && !ft_strncmp(str1, "sb", 2))
+		combo = write(1, "ss", 2);
+	else if (!ft_strncmp(str2, "ra", 2) && !ft_strncmp(str1, "rb", 2))
+		combo = write(1, "rr", 2);
+	else if (!ft_strncmp(str2, "rra\n", 4) && !ft_strncmp(str1, "rrb", 3))
+		combo = write(1, "rrr", 3);
+	return (combo);
+}
+
 static int	print_step(char *str1, char *str2)
 {
-	if (!ft_strncmp(str1, "sa", 2) && !ft_strncmp(str2, "sb", 2))
-		return (write(1, "ss\n", 3));
-	else if (!ft_strncmp(str1, "ra", 2) && !ft_strncmp(str2, "rb", 2))
-		return (write(1, "rr\n", 3));
-	else if (!ft_strncmp(str1, "rra\n", 4) && !ft_strncmp(str2, "rrb", 3))
-		return (write(1, "rrr\n", 4));
-	else
-	{
+	int	combo;
+
+	combo = check_print_combo(str1, str2);
+	if (!combo)
 		ft_putstr_fd(str1, 1);
+	ft_putchar_fd('\n', 1);
+	return (combo);
+}
+
+static void flush_printarr(char **strs)
+{
+	int i;
+
+	i = 0;
+	while (strs[i])
+	{
+		ft_putstr_fd(strs[i], 1);
 		ft_putchar_fd('\n', 1);
-		return (0);
+		free(strs[i++]);
 	}
 }
 
 void	print_handler(char *str)
 {
 	int				i;
-	int				j;
 	int				combo;
 	static char		*strs[3] = {NULL, NULL, NULL};
 
 	i = arr_len(strs);
-	if (!str && i > 0)
-	{
-		j = 0;
-		while (j < i) // can be replaced with while strs[j]
-		{
-			ft_putstr_fd(strs[j], 1);
-			ft_putchar_fd('\n', 1);
-			free(strs[j++]);
-		}
-	}
+	if (!str)
+		flush_printarr(strs);
 	else if (str && i != 2)
 	{
 		strs[i++] = ft_strdup(str);
@@ -50,38 +69,3 @@ void	print_handler(char *str)
 		}
 	}
 }
-
-// void	print_handler(char *str)
-// {
-// 	int				i;
-// 	int				j;
-// 	int				combo;
-// 	static char		*strs[3] = {NULL, NULL, NULL};
-
-// 	i = arr_len(strs);
-// 	if (!str && i > 0)
-// 	{
-// 		j = 0;
-// 		while (j < i) // can be replaced with while strs[j]
-// 		{
-// 			ft_putstr_fd(strs[j], 1);
-// 			ft_putchar_fd('\n', 1);
-// 			free(strs[j]);
-// 			j++;
-// 		}
-// 		return ;
-// 	}
-// 	else if (i != 2)
-// 	{
-// 		strs[i] = ft_strdup(str);
-// 		return ;
-// 	}
-// 	combo = print_step(strs[0], strs[1]); 
-// 	free(strs[0]);
-// 	if (combo)
-// 		strs[0] = NULL;
-// 	else
-// 		strs[0] = strs[1];
-// 	free(strs[1]);
-// 	strs[1] = NULL;
-// }

@@ -5,7 +5,8 @@ SRCS =	actions.c \
 		push_swap.c \
 		sort.c \
 		utils.c \
-		validator.c 
+		validator.c \
+		check_sorted.c
 
 OBJS = $(SRCS:.c=.o)
 
