@@ -31,7 +31,6 @@ int	rotate(t_list **head)
 	if (!head)
 		return (0);
 	last = *head;
-
 	ft_lstadd_back(head, *head);
 	*head = (*head)->next;
 	last->next = NULL;
@@ -52,29 +51,4 @@ int	reverse_rotate(t_list **head)
 	ft_lstadd_front(head, last);
 	temp->next = NULL;
 	return (1);
-}
-
-void	action_dispatcher(char *action, t_list **a, t_list **b)
-{
-	int success;
-
-	success = 0;
-	if (!ft_strncmp(action, "sa", 2))
-		success = swap(a);
-	else if (!ft_strncmp(action, "sb", 2))
-		success = swap(b);
-	else if (!ft_strncmp(action, "pa", 2))
-		success = push(b, a);
-	else if (!ft_strncmp(action, "pb", 2))
-		success = push(a, b);
-	else if (!ft_strncmp(action, "ra", 2))
-		success = rotate(a);
-	else if (!ft_strncmp(action, "rb", 2))
-		success = rotate(b);
-	else if (!ft_strncmp(action, "rra", 3))
-		success = reverse_rotate(a);
-	else if (!ft_strncmp(action, "rrb", 3))
-		success = reverse_rotate(b);
-	if (success)
-		print_handler(action);
 }

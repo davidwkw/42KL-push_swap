@@ -14,7 +14,7 @@ static void	fill_stack(t_list **stack_a, int argc, int *list)
 	i = 0;
 	while (i < argc)
 	{
-		node = ft_lstnew(&list[i]); // might want to handle it not enough mem to allocate
+		node = ft_lstnew(&list[i]);
 		if (!node)
 			error_handler("Error");
 		ft_lstadd_back(stack_a, node);
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 		init_structs(&stack_a, &stack_b);
 		list = validate_int_args(&argc, (argv + 1));
 		fill_stack(&stack_a, argc, list);
-		sort_list(&stack_a, &stack_b, argc);
+		sort_a(&stack_a, &stack_b, argc);
 		print_handler(NULL);
 		free(list);
 	}

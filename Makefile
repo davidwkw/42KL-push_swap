@@ -1,5 +1,6 @@
 SRCS =	actions.c \
-		base_case_handler.c \
+		a_base_handler.c \
+		b_base_handler.c \
 		median_handler.c \
 		print_handler.c \
 		push_swap.c \
