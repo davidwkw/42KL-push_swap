@@ -1,4 +1,5 @@
 SRCS =	actions.c \
+		action_handler.c \
 		a_base_handler.c \
 		b_base_handler.c \
 		median_handler.c \
