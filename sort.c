@@ -3,7 +3,7 @@
 static void	reverse_offset(t_list **a, t_list **b, int offset, char c)
 {
 	int		i;
-	char	step;
+	char	*step;
 
 	i = -1; 
 	if (c == 'a')
@@ -29,7 +29,7 @@ void	sort_a(t_list **a, t_list **b, int p_size)
 	int	offset;
 	int	p_bsize;
 
-	if (is_pt_sorted(&a, p_size))
+	if (is_a_sorted(*a, p_size))
 		return ;
 	if (p_size <= 3)
 		return (a_base_handler(a, p_size));
@@ -40,7 +40,7 @@ void	sort_a(t_list **a, t_list **b, int p_size)
 	{
 		if (vp_to_i((*a)->content) < median && p_size-- && p_bsize++)
 			action_dispatcher("pb", a, b);
-		else if (++offset);
+		else if (++offset)
 			action_dispatcher("ra", a, b);
 	}
 	reverse_offset(a, b, p_size, 'a');
@@ -54,7 +54,7 @@ void	sort_b(t_list **a, t_list **b, int p_size)
 	int offset;
 	int	p_asize;
 
-	if (is_pt_sorted(&b, p_size))
+	if (is_b_sorted(*b, p_size))
 		return (empty_partition_b(a, b, p_size));
 	if (p_size <= 2)
 		return (b_base_handler(a, b, p_size));

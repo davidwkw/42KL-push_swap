@@ -18,7 +18,8 @@ void	action_dispatcher(char *action, t_list **a, t_list **b);
 void	sort_a(t_list **a, t_list **b, int size);
 void	sort_b(t_list **a, t_list **b, int p_size);
 
-int		is_pt_sorted(t_list *head, int size);
+int		is_a_sorted(t_list *head, int size);
+int		is_b_sorted(t_list *head, int size);
 void	empty_partition_b(t_list **a, t_list **b, int size);
 
 void	a_base_handler(t_list **a, int size);
