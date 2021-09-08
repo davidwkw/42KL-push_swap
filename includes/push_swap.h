@@ -1,7 +1,7 @@
 #ifndef PUSH_SWAP_H
 
 # define PUSH_SWAP_H
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 
 void	error_handler(char *error);
 int		*validate_int_args(int *arrc, char *arr[]);

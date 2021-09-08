@@ -43,7 +43,8 @@ void	sort_a(t_list **a, t_list **b, int p_size)
 		else if (++offset)
 			action_dispatcher("ra", a, b);
 	}
-	reverse_offset(a, b, p_size, 'a');
+	if (p_size != ft_lstsize(*a))
+		reverse_offset(a, b, offset, 'a');
 	sort_a(a, b, p_size);
 	sort_b(a, b, p_bsize);
 }
@@ -68,7 +69,8 @@ void	sort_b(t_list **a, t_list **b, int p_size)
 		else if (++offset)
 			action_dispatcher("rb", a, b);
 	}
-	reverse_offset(a, b, offset, 'b');
+	if (p_size != ft_lstsize(*b))
+		reverse_offset(a, b, offset, 'b');
 	sort_a(a, b, p_asize);
 	sort_b(a, b, p_size);
 }

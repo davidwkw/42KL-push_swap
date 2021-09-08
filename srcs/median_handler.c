@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <limits.h>
 
 static int	find_min(t_list *stack, int size)
 {
@@ -27,8 +28,7 @@ static void insertion_sort(t_list *stack, int *arr, int size)
 	arr[i++] = find_min(stack, size);
 	while (i < size)
 	{
-		curr_value = vp_to_i(stack->content);
-		arr[i] = curr_value;
+		arr[i] = INT_MAX;
 		temp = stack;
 		j = -1;
 		while (++j < size)
