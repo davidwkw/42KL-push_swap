@@ -7,8 +7,8 @@ static void	reverse_offset(t_list **a, t_list **b, int offset, char c)
 
 	i = -1; 
 	if (c == 'a')
-		step = "rrb";
-	else
+		step = "rra";
+	else if (c == 'b')
 		step = "rrb";
 	while (++i < offset)
 		action_dispatcher(step, a, b);
@@ -34,11 +34,11 @@ void	sort_a(t_list **a, t_list **b, int p_size)
 	if (p_size <= 3)
 		return (a_base_handler(a, p_size));
 	offset = 0;
-	median = find_medval(*a, p_size);
 	p_bsize = 0;
-	while (p_bsize < p_size)
+	median = find_medval(*a, p_size);
+	while (p_bsize < p_size && offset < p_size)
 	{
-		if (vp_to_i((*a)->content) < median && p_size-- && p_bsize++)
+		if (vp_to_i((*a)->content) < median && p_size-- && ++p_bsize)
 			action_dispatcher("pb", a, b);
 		else if (++offset)
 			action_dispatcher("ra", a, b);
@@ -56,18 +56,19 @@ void	sort_b(t_list **a, t_list **b, int p_size)
 
 	if (is_b_sorted(*b, p_size))
 		return (empty_partition_b(a, b, p_size));
-	if (p_size <= 2)
+	if (p_size <= 3)
 		return (b_base_handler(a, b, p_size));
-	median = find_medval(*b, p_size);
 	offset = 0;
-	while (p_asize < p_size)
+	p_asize = 0;
+	median = find_medval(*b, p_size);
+	while (p_asize < p_size && offset < p_size)
 	{
-		if (vp_to_i((*a)->content) > median && p_size-- && p_asize++)
+		if (vp_to_i((*b)->content) > median && p_size-- && ++p_asize)
 			action_dispatcher("pa", a, b);
 		else if (++offset)
 			action_dispatcher("rb", a, b);
 	}
 	reverse_offset(a, b, offset, 'b');
-	sort_b(a, b, p_size);
 	sort_a(a, b, p_asize);
+	sort_b(a, b, p_size);
 }

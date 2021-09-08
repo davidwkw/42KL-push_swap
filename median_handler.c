@@ -1,26 +1,57 @@
 #include "push_swap.h"
 
+static int	find_min(t_list *stack, int size)
+{
+	int	min;
+	int	i;
+
+	i = -1;
+	min = vp_to_i(stack->content);
+	while (++i < size)
+	{
+		if (vp_to_i(stack->content) < min)
+			min = vp_to_i(stack->content);
+		stack = stack->next;
+	}
+	return (min);
+}
+
+static void insertion_sort(t_list *stack, int *arr, int size)
+{
+	int		curr_value;
+	t_list	*temp;
+	int		i;
+	int		j;
+	
+	i = 0;
+	arr[i++] = find_min(stack, size);
+	while (i < size)
+	{
+		curr_value = vp_to_i(stack->content);
+		arr[i] = curr_value;
+		temp = stack;
+		j = -1;
+		while (++j < size)
+		{
+			curr_value = vp_to_i(temp->content);
+			if (curr_value > arr[i - 1] && curr_value < arr[i])
+				arr[i] = curr_value;
+			temp = temp->next;
+		}
+		i++;
+	}
+}
+
 int	find_medval(t_list *stack, int size)
 {
-	int median_i;
-	int i;
+	int	*sorted_arr;
 	int	median;
 
-	median_i = size / 2 + size % 2;
-	i = -1;
-	median = vp_to_i(stack->content);
-	while (++i < median_i)
-	{
-		if (vp_to_i(stack->content) > median)
-			median = vp_to_i(stack->content);
-		stack = stack->next;
-	}
-	while (stack && median_i < size)
-	{
-		if (vp_to_i(stack->content) < median)
-			median = vp_to_i(stack->content);
-		stack = stack->next;
-		median_i++;
-	}
+	sorted_arr = malloc(sizeof(int) * size);
+	if (!sorted_arr)
+		return (0);
+	insertion_sort(stack, sorted_arr, size);
+	median = sorted_arr[size / 2];
+	free(sorted_arr);
 	return (median);
 }

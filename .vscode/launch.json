@@ -11,7 +11,7 @@
 			"program": "/mnt/c/Users/David Wang/Desktop/core/push_swap/push_swap",
 			// "program": "${fileDirname}/${fileBasenameNoExtension}",
 			"args": [
-				"7 4"
+				"42 10 89 35 18 59 54 16 5 47 67 96 21 58 15 12 11 100 81 74 66 22 14 70 8 95 27 93 84 78 9 80 55 60 69 97 43 28 4 62 23 39 32 73 52 64 24 49 57 17 91 79 0 26 98 41 19 37 77 30 33 71 6 68 40 31 2 45 76 85 34 48 53 36 61 63 88 13 46 20 94 72 82 90 83 92 50 51 25 44 75 86 1 38 7 99 87 3 56 29"
 			],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
