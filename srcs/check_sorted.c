@@ -2,7 +2,7 @@
 
 int	is_a_sorted(t_list *head, int size)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < size - 1)
@@ -16,7 +16,7 @@ int	is_a_sorted(t_list *head, int size)
 
 int	is_b_sorted(t_list *head, int size)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < size - 1)

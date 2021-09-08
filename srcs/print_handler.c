@@ -1,8 +1,8 @@
 #include "push_Swap.h"
 
-static int check_print_combo(char *str1, char *str2)
+static int	check_print_combo(char *str1, char *str2)
 {
-	int combo;
+	int	combo;
 
 	combo = 0;
 	if (!ft_strncmp(str1, "sa", 2) && !ft_strncmp(str2, "sb", 2))
@@ -31,9 +31,9 @@ static int	print_step(char *str1, char *str2)
 	return (combo);
 }
 
-static void flush_printarr(char **strs)
+static void	flush_printarr(char **strs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (strs[i])

@@ -55,7 +55,7 @@ static void	b_partition_base_3_handler(t_list **b)
 
 void	b_base_handler(t_list **a, t_list **b, int size)
 {
-	int total_stack_size;
+	int	total_stack_size;
 
 	total_stack_size = ft_lstsize(*b);
 	if (size == 2)

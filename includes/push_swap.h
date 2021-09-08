@@ -6,7 +6,6 @@
 void	error_handler(char *error);
 int		*validate_int_args(int *arrc, char *arr[]);
 int		vp_to_i(void *ptr);
-void	free_arr(void **ptr, int i, int n);
 int		arr_len(char **arr);
 
 int		swap(t_list **el);

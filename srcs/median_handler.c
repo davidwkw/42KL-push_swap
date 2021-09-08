@@ -17,13 +17,13 @@ static int	find_min(t_list *stack, int size)
 	return (min);
 }
 
-static void insertion_sort(t_list *stack, int *arr, int size)
+static void	insertion_sort(t_list *stack, int *arr, int size)
 {
 	int		curr_value;
 	t_list	*temp;
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	arr[i++] = find_min(stack, size);
 	while (i < size)

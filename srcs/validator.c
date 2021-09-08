@@ -4,7 +4,7 @@
 static void	is_arrint(int arr_c, char **s)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < arr_c)

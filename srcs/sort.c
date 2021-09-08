@@ -5,7 +5,7 @@ static void	reverse_offset(t_list **a, t_list **b, int offset, char c)
 	int		i;
 	char	*step;
 
-	i = -1; 
+	i = -1;
 	if (c == 'a')
 		step = "rra";
 	else if (c == 'b')
@@ -25,7 +25,7 @@ void	empty_partition_b(t_list **a, t_list **b, int size)
 
 void	sort_a(t_list **a, t_list **b, int p_size)
 {
-	int median;
+	int	median;
 	int	offset;
 	int	p_bsize;
 
@@ -52,7 +52,7 @@ void	sort_a(t_list **a, t_list **b, int p_size)
 void	sort_b(t_list **a, t_list **b, int p_size)
 {
 	int	median;
-	int offset;
+	int	offset;
 	int	p_asize;
 
 	if (is_b_sorted(*b, p_size))

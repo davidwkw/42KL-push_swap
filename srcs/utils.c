@@ -7,18 +7,12 @@ void	error_handler(char *error)
 	exit(1);
 }
 
-void	free_arr(void **ptr, int i, int n)
-{
-	while (i < n)
-		free(ptr[i++]);
-}
-
 int	vp_to_i(void *ptr)
 {
 	return (*((int *)ptr));
 }
 
-int arr_len(char **arr)
+int	arr_len(char **arr)
 {
 	unsigned int	i;
 
