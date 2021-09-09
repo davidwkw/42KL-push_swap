@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		if (!is_a_sorted(stack_a, ft_lstsize(stack_a)) && ft_lstsize(stack_b))
 			error_handler("KO\n");
 		free(list);
-		ft_putstr_fd("OK\n" ,1);
+		ft_putstr_fd("OK\n", 1);
 	}
 	return (0);
 }
