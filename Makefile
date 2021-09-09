@@ -14,6 +14,12 @@ SRCS =	$(SRCDIR)/actions.c \
 
 OBJS = $(SRCS:.c=.o)
 
+BONUS_DIR = checker_src
+
+BONUS_SRCS = $(BONUS_DIR)/checker.c
+
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
+
 INCLUDES = includes
 
 LIBFTDIR = libft
@@ -22,22 +28,28 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g -I$(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES)
 
 NAME = push_swap
 
+BONUS = checker
+
 all : $(NAME)
+
+bonus : $(BONUS)
+
+$(LIBFT) :
+	@make -C $(LIBFTDIR) bonus
 
 $(NAME) : $(LIBFT) $(OBJS)
 	@echo "Creating $(NAME)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
 
-$(LIBFT):
-	@make -C $(LIBFTDIR) bonus
+$(BONUS) = all $(BONUS_OBJS)
+	@echo "Creating $(BONUS)"
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -D BUFFER_SIZE=4 -o $@
 
-bonus : all
-
-eval:
+eval :
 	@echo [500]
 	@echo -n 'ARG="'
 	@jot 1000 -1000 1000 | uniq | sort -R  |head -500 | tr '\n' ' '
@@ -48,7 +60,7 @@ eval:
 	@echo '"; ./push_swap $$ARG'
 	@echo [Visualizer https://codepen.io/ahkoh/full/bGWxmVz]
 
-test: bonus
+test : bonus
 	git clone https://github.com/lmalki-h/push_swap_tester.git || true
 	cd push_swap_tester/ && bash tester.sh .. 3 20
 	cd push_swap_tester/ && bash tester.sh .. 5 20
@@ -56,8 +68,8 @@ test: bonus
 	cd push_swap_tester/ && bash tester.sh .. 500 100
 
 clean :
-	@echo "Cleaning up $(OBJS)"
-	@$(RM) $(OBJS)
+	@echo "Cleaning up $(OBJS) $(BONUS_OBJS)"
+	@echo $(RM) $(OBJS)
 	@make -C $(LIBFTDIR) clean
 
 fclean : clean
