@@ -45,11 +45,11 @@ $(NAME) : $(LIBFT) $(OBJS)
 	@echo "Creating $(NAME)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
 
-$(BONUS) = all $(BONUS_OBJS)
+$(BONUS) : all $(BONUS_OBJS)
 	@echo "Creating $(BONUS)"
 	@$(CC) $(CFLAGS) $(BONUS_OBJS) -D BUFFER_SIZE=4 -o $@
 
-eval :
+eval : bonus
 	@echo [500]
 	@echo -n 'ARG="'
 	@jot 1000 -1000 1000 | uniq | sort -R  |head -500 | tr '\n' ' '
@@ -69,12 +69,12 @@ test : bonus
 
 clean :
 	@echo "Cleaning up $(OBJS) $(BONUS_OBJS)"
-	@echo $(RM) $(OBJS)
+	@$(RM) $(OBJS) $(BONUS_OBJS)
 	@make -C $(LIBFTDIR) clean
 
 fclean : clean
-	@echo "Cleaning up $(NAME)"
-	@$(RM) $(NAME)
+	@echo "Cleaning up $(NAME) $(BONUS)"
+	@$(RM) $(NAME) $(BONUS)
 	@make -C $(LIBFTDIR) fclean
 
 re : fclean all
