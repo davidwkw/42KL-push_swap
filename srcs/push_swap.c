@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
-static void	init_structs(t_list **a_head, t_list **b_head)
+void	init_structs(t_list **a_head, t_list **b_head)
 {
 	*a_head = NULL;
 	*b_head = NULL;
 }
 
-static void	fill_stack(t_list **stack_a, int argc, int *list)
+void	fill_stack(t_list **stack_a, int argc, int *list)
 {
 	int		i;
 	t_list	*node;

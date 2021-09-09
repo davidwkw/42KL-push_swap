@@ -14,6 +14,13 @@ SRCS =	$(SRCDIR)/actions.c \
 
 OBJS = $(SRCS:.c=.o)
 
+GNL_DIR = get_next_line
+
+GNL_SRCS =	$(GNL_DIR)/get_next_line.c \
+			$(GNL_DIR)/get_next_line_utils.c
+
+GNL_OBJS = $(SRCS:.c=.o)
+
 BONUS_DIR = checker_src
 
 BONUS_SRCS = $(BONUS_DIR)/checker.c
@@ -28,7 +35,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -I$(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=4 -I$(INCLUDES)
 
 NAME = push_swap
 
@@ -45,9 +52,9 @@ $(NAME) : $(LIBFT) $(OBJS)
 	@echo "Creating $(NAME)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
 
-$(BONUS) : all $(BONUS_OBJS)
+$(BONUS) : all $(GNL_OBJS) $(BONUS_OBJS)
 	@echo "Creating $(BONUS)"
-	@$(CC) $(CFLAGS) $(BONUS_OBJS) -D BUFFER_SIZE=4 -o $@
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(GNL_OBJS) -o $@
 
 eval : bonus
 	@echo [500]
