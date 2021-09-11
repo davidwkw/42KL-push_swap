@@ -1,4 +1,4 @@
-#include "push_Swap.h"
+#include "push_swap.h"
 
 static int	check_print_combo(char *str1, char *str2)
 {
