@@ -47,22 +47,26 @@ static int	store_prevline(t_line *line_obj, char **read_str, char **line)
 	(*line_obj).p_end = ft_strchr(*read_str, '\n');
 	if (!(*line_obj).p_end)
 		(*line_obj).p_end = ft_strchr(*read_str, '\0');
-	*line = ft_strndup(*read_str, (*line_obj).p_end - *read_str);
+	if (line_obj->temp_line)
+		free(*line);
+	line_obj->temp_line = ft_strndup(*read_str, (*line_obj).p_end - *read_str);
+	*line = line_obj->temp_line;
 	if (ft_strchr(*read_str, '\n'))
 	{
 		store_endline(line_obj, read_str);
 		return (1);
 	}
 	free(*read_str);
+	free(*line);
 	*read_str = NULL;
 	return (0);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	t_line		line_obj;
-	static char	*read_str = NULL;
-	char		*temp;
+	static t_line	line_obj = {.p_end = NULL, .read_bytes = 0, .temp_line = NULL};
+	static char		*read_str = NULL;
+	char			*temp;
 
 	if (fd == -1 || !line || BUFFER_SIZE < 0)
 		return (-1);

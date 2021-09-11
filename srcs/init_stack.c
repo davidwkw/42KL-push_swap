@@ -21,21 +21,3 @@ void	fill_stack(t_list **stack_a, int argc, int *list)
 		i++;
 	}
 }
-
-int	main(int argc, char **argv)
-{
-	int		*list;
-	t_list	*stack_a;
-	t_list	*stack_b;
-
-	if (argc > 1)
-	{
-		init_structs(&stack_a, &stack_b);
-		list = validate_int_args(&argc, (argv + 1));
-		fill_stack(&stack_a, argc, list);
-		sort_a(&stack_a, &stack_b, argc);
-		print_handler(NULL);
-		free(list);
-	}
-	return (0);
-}

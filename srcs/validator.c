@@ -67,19 +67,31 @@ static void	check_arrduplimits(unsigned int arrc, int *list)
 	}
 }
 
+static char	**duplicate_arr(char **arr, int arrc)
+{
+	char	**arr_cpy;
+	int		i;
+
+	arr_cpy = malloc(sizeof(char *) * (arrc + 1));
+	i = -1;
+	while(arr[++i])
+		arr_cpy[i] = ft_strdup(arr[i]);
+	arr_cpy[i] = NULL;
+	return (arr_cpy);
+}
+
 int	*validate_int_args(int *arrc, char **arr)
 {
 	int		*list;
 
-	if (*arrc == 2)
-	{
+	if (*arrc == 1)
 		arr = ft_split(*arr, ' ');
-		*arrc = arr_len(arr);
-	}
 	else
-		*arrc -= 1;
+		arr = duplicate_arr(arr, *arrc);
+	*arrc = arr_len(arr);
 	is_arrint(*arrc, arr);
 	list = atoi_intl(*arrc, arr);
+	free_nested_arr(arr);
 	if (!list)
 		error_handler("Error");
 	check_arrduplimits(*arrc, list);

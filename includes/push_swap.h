@@ -10,11 +10,17 @@ void	error_handler(char *error);
 int		*validate_int_args(int *arrc, char *arr[]);
 int		vp_to_i(void *ptr);
 int		arr_len(char **arr);
+void	free_nested_arr(char **arr);
+void	clear_list(t_list **lst);
 
 int		swap(t_list **el);
 int		push(t_list **stack1, t_list **stack2);
 int		rotate(t_list **head);
 int		reverse_rotate(t_list **head);
+int		combo_swap(t_list **a, t_list **b);
+int		combo_rotate(t_list **a, t_list **b);
+int		combo_reverse_rotate(t_list **a, t_list **b);
+int		action_handler(char *action, t_list **a, t_list **b);
 void	action_dispatcher(char *action, t_list **a, t_list **b);
 
 void	sort_a(t_list **a, t_list **b, int size);
