@@ -2,8 +2,9 @@
 
 int	action_handler(char *action, t_list **a, t_list **b)
 {
-	static int	success = 0;
+	int	success;
 
+	success = 0;
 	if (!ft_strncmp(action, "sa", 2))
 		success = swap(a);
 	else if (!ft_strncmp(action, "sb", 2))
