@@ -2,7 +2,7 @@
 
 int	combo_swap(t_list **a, t_list **b)
 {
-	return (swap(a)	&& swap(b));	
+	return (swap(a) && swap(b));	
 }
 
 int	combo_rotate(t_list **a, t_list **b)

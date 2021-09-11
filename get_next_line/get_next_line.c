@@ -64,7 +64,7 @@ static int	store_prevline(t_line *line_obj, char **read_str, char **line)
 
 int	get_next_line(int fd, char **line)
 {
-	static t_line	line_obj = {.p_end = NULL, .read_bytes = 0, .temp_line = NULL};
+	static t_line	line_obj = {.temp_line = NULL};
 	static char		*read_str = NULL;
 	char			*temp;
 
