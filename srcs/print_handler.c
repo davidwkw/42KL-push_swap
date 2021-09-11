@@ -9,13 +9,13 @@ static int	check_print_combo(char *str1, char *str2)
 		combo = write(1, "ss", 2);
 	else if (!ft_strncmp(str1, "ra", 2) && !ft_strncmp(str2, "rb", 2))
 		combo = write(1, "rr", 2);
-	else if (!ft_strncmp(str1, "rra\n", 4) && !ft_strncmp(str2, "rrb", 3))
+	else if (!ft_strncmp(str1, "rra", 4) && !ft_strncmp(str2, "rrb", 3))
 		combo = write(1, "rrr", 3);
 	else if (!ft_strncmp(str2, "sa", 2) && !ft_strncmp(str1, "sb", 2))
 		combo = write(1, "ss", 2);
 	else if (!ft_strncmp(str2, "ra", 2) && !ft_strncmp(str1, "rb", 2))
 		combo = write(1, "rr", 2);
-	else if (!ft_strncmp(str2, "rra\n", 4) && !ft_strncmp(str1, "rrb", 3))
+	else if (!ft_strncmp(str2, "rra", 4) && !ft_strncmp(str1, "rrb", 3))
 		combo = write(1, "rrr", 3);
 	return (combo);
 }
