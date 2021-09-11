@@ -74,7 +74,7 @@ static char	**duplicate_arr(char **arr, int arrc)
 
 	arr_cpy = malloc(sizeof(char *) * (arrc + 1));
 	i = -1;
-	while(arr[++i])
+	while (arr[++i])
 		arr_cpy[i] = ft_strdup(arr[i]);
 	arr_cpy[i] = NULL;
 	return (arr_cpy);
