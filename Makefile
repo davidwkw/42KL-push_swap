@@ -38,7 +38,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=4 -I$(INCLUDES) -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=4 -I$(INCLUDES)
 
 NAME = push_swap
 
