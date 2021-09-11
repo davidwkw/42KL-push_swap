@@ -1,5 +1,19 @@
 #include "push_swap.h"
 
+static int	combo_check(char *action, t_list **a, t_list **b)
+{
+	int	success;
+
+	success = 0;
+	if (!ft_strncmp(action, "ss", 2))
+		success = combo_swap(a, b);
+	else if (!ft_strncmp(action, "rr", 2))
+		success = combo_rotate(a, b);
+	else if (!ft_strncmp(action, "rrr", 3))
+		success = combo_reverse_rotate(a, b);
+	return (success);
+}
+
 int	action_handler(char *action, t_list **a, t_list **b)
 {
 	int	success;
@@ -21,12 +35,8 @@ int	action_handler(char *action, t_list **a, t_list **b)
 		success = reverse_rotate(a);
 	else if (!ft_strncmp(action, "rrb", 3))
 		success = reverse_rotate(b);
-	else if (!ft_strncmp(action, "ss", 2))
-		success = combo_swap(a, b);
-	else if (!ft_strncmp(action, "rr", 2))
-		success = combo_rotate(a, b);
-	else if (!ft_strncmp(action, "rrr", 3))
-		success = combo_reverse_rotate(a, b);
+	else
+		success = combo_check(action, a, b);
 	return (success);
 }
 
