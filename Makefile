@@ -38,7 +38,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=4 -I$(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=4 -I$(INCLUDES) -g
 
 NAME = push_swap
 
@@ -57,7 +57,7 @@ $(NAME) : $(LIBFT) $(OBJS) $(PS_OBJS)
 
 $(BONUS) : $(LIBFT) $(OBJS) $(GNL_OBJS) $(BONUS_OBJS)
 	@echo "Creating $(BONUS)"
-	$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(BONUS_OBJS) $(LIBFT) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(BONUS_OBJS) $(LIBFT) -o $@
 
 eval : 
 	@echo [500]

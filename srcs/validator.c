@@ -22,25 +22,25 @@ static void	is_arrint(int arr_c, char **s)
 	}
 }
 
-static int	*atoi_intl(unsigned int arrc, char *arr[])
+static long	*atoi_intl(unsigned int arrc, char **arr)
 {
 	unsigned int	i;
-	int				*list;
+	long			*list;
 
-	list = malloc(sizeof(int) * (arrc));
+	list = malloc(sizeof(long) * (arrc));
 	i = 0;
 	if (list)
 	{
 		while (i < arrc)
 		{
-			list[i] = ft_atoi(arr[i]);
+			list[i] = ft_atol(arr[i]);
 			i++;
 		}
 	}
 	return (list);
 }
 
-static void	check_arrduplimits(unsigned int arrc, int *list)
+static void	check_arrduplimits(unsigned int arrc, long *list)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -48,7 +48,7 @@ static void	check_arrduplimits(unsigned int arrc, int *list)
 	i = 0;
 	while (i < arrc)
 	{
-		if (list[i] >= INT_MAX || list[i] <= INT_MIN)
+		if (list[i] > INT_MAX || list[i] < INT_MIN)
 		{
 			free(list);
 			error_handler("Error");
@@ -80,9 +80,9 @@ static char	**duplicate_arr(char **arr, int arrc)
 	return (arr_cpy);
 }
 
-int	*validate_int_args(int *arrc, char **arr)
+long	*validate_int_args(int *arrc, char **arr)
 {
-	int		*list;
+	long	*list;
 
 	if (*arrc == 1)
 		arr = ft_split(*arr, ' ');

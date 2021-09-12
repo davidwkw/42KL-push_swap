@@ -36,7 +36,7 @@ void	execute_step(char *step, t_list **a, t_list **b)
 
 int	main(int argc, char **argv)
 {
-	int		*list;
+	long	*list;
 	char	*step;
 	t_list	*stack_a;
 	t_list	*stack_b;
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 		fill_stack(&stack_a, total_size, list);
 		while (get_next_line(0, &step))
 			execute_step(step, &stack_a, &stack_b);
-		if (!is_a_sorted(stack_a, total_size) && !(ft_lstsize(stack_b)))
+		if (!is_a_sorted(stack_a, total_size) && ft_lstsize(stack_b))
 			error_handler("KO");
 		ft_putstr_fd("OK\n", 1);
 		clear_list(&stack_a);

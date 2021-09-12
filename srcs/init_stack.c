@@ -6,7 +6,7 @@ void	init_structs(t_list **a_head, t_list **b_head)
 	*b_head = NULL;
 }
 
-void	fill_stack(t_list **stack_a, int argc, int *list)
+void	fill_stack(t_list **stack_a, int argc, long	*list)
 {
 	int		i;
 	t_list	*node;

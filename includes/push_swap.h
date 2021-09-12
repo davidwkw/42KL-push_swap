@@ -4,10 +4,10 @@
 # include "../libft/libft.h"
 
 void	init_structs(t_list **a_head, t_list **b_head);
-void	fill_stack(t_list **stack_a, int argc, int *list);
+void	fill_stack(t_list **stack_a, int argc, long *list);
 
 void	error_handler(char *error);
-int		*validate_int_args(int *arrc, char *arr[]);
+long	*validate_int_args(int *arrc, char **arr);
 int		vp_to_i(void *ptr);
 int		arr_len(char **arr);
 void	free_nested_arr(char **arr);

@@ -2,7 +2,7 @@
 
 int	main(int argc, char **argv)
 {
-	int		*list;
+	long	*list;
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		total_size;
