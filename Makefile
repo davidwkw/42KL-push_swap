@@ -70,7 +70,7 @@ eval :
 	@echo '"; ./push_swap $$ARG'
 	@echo [Visualizer https://codepen.io/ahkoh/full/bGWxmVz]
 
-test : bonus
+test : all
 	git clone https://github.com/lmalki-h/push_swap_tester.git || true
 	cd push_swap_tester/ && bash tester.sh .. 3 20
 	cd push_swap_tester/ && bash tester.sh .. 5 20
