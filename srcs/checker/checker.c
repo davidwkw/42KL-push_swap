@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		total_size = argc - 1;
 		list = validate_int_args(&total_size, (argv + 1));
 		fill_stack(&stack_a, total_size, list);
-		while (get_next_line(0, &step))
+		while (get_next_line(0, &step) > 0)
 			execute_step(step, &stack_a, &stack_b);
 		if (!is_a_sorted(stack_a, total_size) && ft_lstsize(stack_b))
 			error_handler("KO");

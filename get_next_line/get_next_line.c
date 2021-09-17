@@ -56,7 +56,6 @@ static int	store_prevline(t_line *l_obj, char **line)
 		return (1);
 	}
 	free(l_obj->r_str);
-	free(*line);
 	l_obj->r_str = NULL;
 	return (0);
 }
