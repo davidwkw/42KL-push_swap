@@ -15,7 +15,7 @@ SRCS =	$(SRCDIR)/actions.c \
 
 OBJS = $(SRCS:.c=.o)
 
-PS_SRCS = $(SRCDIR)/push_swap/main.c \
+PS_SRCS = $(SRCDIR)/push_swap/push_swap.c \
 
 PS_OBJS = $(PS_SRCS:.c=.o)
 
