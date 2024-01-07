@@ -9,8 +9,6 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (EXIT_FAILURE);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
 
 	init_structs(&stack_a, &stack_b);
 	total_size = argc - 1;
