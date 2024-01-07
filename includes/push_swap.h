@@ -1,6 +1,7 @@
 #ifndef PUSH_SWAP_H
 
 # define PUSH_SWAP_H
+# include <stdlib.h>
 # include "../libft/libft.h"
 
 void	init_structs(t_list **a_head, t_list **b_head);
